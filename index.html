@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Melky Raham Ariyanto, S.H.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: slideDown 0.8s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: slideUp 0.8s ease;
+        }
+
+        .hero .description {
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease 0.3s both;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 20px;
+        }
+
+        /* Cards Section */
+        .cards-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .card-features li {
+            padding: 8px 0;
+            color: #666;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .card-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .card-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover {
+            opacity: 0.9;
+            transform: translateX(5px);
+        }
+
+        /* About Section */
+        .about-section {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            border-radius: 10px;
+            margin: 60px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .skills-category {
+            margin: 20px 0;
+        }
+
+        .skills-category h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .contact-section h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-size: 16px;
+            margin: 15px 0;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">M$88 Portfolio</div>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#documents">Dokumen</a></li>
+                <li><a href="#tentang">Tentang Saya</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Melky Raham Ariyanto, S.H.</h1>
+        <p class="subtitle">Manager Operasional | Sarjana Hukum | Junior Programmer</p>
+        <p class="description">
+            Profesional berpengalaman dalam manajemen operasional, penyusunan SOP, dan penjadwalan sumber daya manusia. 
+            Memiliki kombinasi unik antara keahlian hukum dan teknis programming.
+        </p>
+        <div class="hero-buttons">
+            <a href="#documents" class="btn btn-primary">Lihat Dokumen</a>
+            <a href="#kontak" class="btn btn-secondary">Hubungi Saya</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Documents Section -->
+        <section id="documents">
+            <h2 class="section-title">Dokumen Profesional</h2>
+            
+            <div class="cards-grid">
+                <!-- CV Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📄</div>
+                        <div class="card-title">Curriculum Vitae</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">
+                            Dokumen CV standar ATS-friendly yang menampilkan pengalaman, pendidikan, dan keterampilan profesional Anda.
+                        </p>
+                        <ul class="card-features">
+                            <li>Format ATS-Friendly</li>
+                            <li>Ringkasan Profesional</li>
+                            <li>Pengalaman Kerja Detail</li>
+                            <li>Sertifikasi & Pelatihan</li>
+                            <li>Keterampilan Teknis & Profesional</li>
+                        </ul>
+                        <a href="CV/CV_Melky_Raham_Ariyanto.html" class="card-link" target="_blank">Buka CV →</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💼</div>
+                        <div class="card-title">Portfolio</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">
+                            Portofolio lengkap yang menampilkan proyek-proyek, pencapaian, dan studi kasus pekerjaan Anda.
+                        </p>
+                        <ul class="card-features">
+                            <li>Proyek-Proyek Utama</li>
+                            <li>SOP yang Dikembangkan</li>
+                            <li>Sistem Penjadwalan</li>
+                            <li>Hasil & Pencapaian</li>
+                            <li>Studi Kasus Implementasi</li>
+                        </ul>
+                        <a href="Portfolio/portfolio.html" class="card-link" target="_blank">Lihat Portfolio →</a>
+                    </div>
+                </div>
+
+                <!-- Surat Lamaran Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">✉️</div>
+                        <div class="card-title">Surat Lamaran Kerja</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">
+                            Template surat lamaran kerja profesional yang siap disesuaikan dengan posisi dan perusahaan tujuan.
+                        </p>
+                        <ul class="card-features">
+                            <li>Format Formal Indonesia</li>
+                            <li>Template Fleksibel</li>
+                            <li>Daftar Lampiran Lengkap</li>
+                            <li>Siap untuk Disesuaikan</li>
+                            <li>Kompetensi Terstruktur</li>
+                        </ul>
+                        <a href="Surat Lamaran/Surat_Lamaran_Kerja.html" class="card-link" target="_blank">Buka Surat Lamaran →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="tentang">
+            <div class="about-grid">
+                <div>
+                    <h3>Tentang Saya</h3>
+                    <p>
+                        Saya adalah seorang profesional dengan latar belakang pendidikan Sarjana Hukum yang bekerja sebagai 
+                        Manager Operasional di PT GKN. Dengan pengalaman bertahun-tahun dalam mengelola operasional perusahaan, 
+                        saya telah mengembangkan keahlian khusus dalam penyusunan Standard Operating Procedures (SOP) dan 
+                        manajemen sumber daya manusia.
+                    </p>
+                    <p>
+                        Selain itu, saya juga memiliki kemampuan junior programming yang terus saya kembangkan untuk meningkatkan 
+                        efisiensi proses bisnis melalui solusi teknologi. Sertifikasi GADA UTAMA yang saya miliki membuktikan 
+                        komitmen saya terhadap standar keahlian dan profesionalisme.
+                    </p>
+                </div>
+                <div>
+                    <h3>Keahlian Utama</h3>
+                    
+                    <div class="skills-category">
+                        <h4>🏢 Manajemen & Operasional</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">Manajemen Operasional</span>
+                            <span class="skill-tag">Penyusunan SOP</span>
+                            <span class="skill-tag">Manajemen SDM</span>
+                            <span class="skill-tag">Penjadwalan</span>
+                            <span class="skill-tag">Efisiensi Proses</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h4>⚖️ Keahlian Hukum</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">Hukum Pidana</span>
+                            <span class="skill-tag">Hukum Perdata</span>
+                            <span class="skill-tag">Kepatuhan Regulasi</span>
+                            <span class="skill-tag">GADA UTAMA</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h4>💻 Teknis & Programming</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Database</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="kontak">
+            <h3>Hubungi Saya</h3>
+            <p style="margin-bottom: 30px;">
+                Saya terbuka untuk peluang kerja baru dan kolaborasi profesional. 
+                Silakan hubungi saya melalui informasi di bawah ini.
+            </p>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:melkiraham@yahoo.com">melkiraham@yahoo.com</a></p>
+                <p><strong>Telepon:</strong> <a href="tel:+62">+62 81314532008</a></p>
+                <p><strong>Lokasi:</strong> Jakarta, Indonesia</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Melky Siagian, S.H. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#home">Beranda</a>
+            <a href="#documents">Dokumen</a>
+            <a href="#tentang">Tentang Saya</a>
+            <a href="#kontak">Kontak</a>
+        </div>
+    </footer>
+</body>
+</html>
