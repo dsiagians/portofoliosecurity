@@ -27,7 +27,7 @@
             z-index: 1000;
         }
 
-        nav .container {
+        nav .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -42,10 +42,11 @@
             font-weight: bold;
         }
 
-        nav ul {
+        .nav-menu {
             list-style: none;
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         nav a {
@@ -53,10 +54,68 @@
             text-decoration: none;
             transition: opacity 0.3s;
             font-weight: 500;
+            padding: 0.5rem 0;
         }
 
         nav a:hover {
             opacity: 0.8;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                gap: 0;
+                display: none;
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 15px 20px;
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
         }
 
         /* Hero Section */
@@ -302,8 +361,8 @@
                 grid-template-columns: 1fr;
             }
 
-            nav ul {
-                gap: 1rem;
+            .nav-menu {
+                gap: 0;
             }
 
             .hero h1 {
@@ -322,6 +381,26 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .about-content h3 {
+                font-size: 24px;
+            }
+
+            .contact-section h3 {
+                font-size: 24px;
             }
         }
 
@@ -422,13 +501,18 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="container">
-            <div class="logo">M$88 Portfolio</div>
-            <ul>
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#documents">Dokumen</a></li>
-                <li><a href="#tentang">Tentang Saya</a></li>
-                <li><a href="#kontak">Kontak</a></li>
+        <div class="nav-container">
+            <div class="logo">Melky Raham</div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="CV/CV_Melky_Raham_Ariyanto.html">CV</a></li>
+                <li><a href="Portfolio/portfolio.html">Portfolio</a></li>
+                <li><a href="Surat Lamaran/Surat_Lamaran_Kerja.html">Surat Lamaran</a></li>
             </ul>
         </div>
     </nav>
@@ -591,13 +675,41 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Melky, S.H. All rights reserved.</p>
+        <p>&copy; 2026 Melky Raham Ariyanto, S.H. All rights reserved.</p>
         <div class="footer-links">
-            <a href="#home">Beranda</a>
+            <a href="#home">Home</a>
             <a href="#documents">Dokumen</a>
             <a href="#tentang">Tentang Saya</a>
             <a href="#kontak">Kontak</a>
         </div>
     </footer>
+
+    <script>
+        // Navigation Drawer Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>

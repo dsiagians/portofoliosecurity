@@ -3,87 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Melky Raham Ariyanto Sh</title>
+    <title>CV - Melky Raham Ariyanto, S.H.</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 20px;
             background-color: #f4f4f4;
+            color: #333;
         }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                gap: 0;
+                display: none;
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 15px 20px;
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            padding: 20px;
+        }
+
         .container {
             max-width: 900px;
-            margin: 0 auto;
+            margin: 20px auto;
             background-color: white;
             padding: 40px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+
         header {
             text-align: center;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid #667eea;
             padding-bottom: 20px;
             margin-bottom: 30px;
         }
+
         h1 {
             margin: 0;
             color: #333;
+            font-size: 28px;
         }
+
         .contact-info {
             font-size: 14px;
             color: #666;
             margin-top: 10px;
+            line-height: 1.6;
         }
+
         section {
             margin-bottom: 25px;
         }
+
         h2 {
             font-size: 16px;
-            color: #333;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 8px;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 10px 15px;
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-radius: 3px;
         }
+
         .job-entry, .education-entry, .skill-entry {
             margin-bottom: 15px;
         }
+
         .job-title {
             font-weight: bold;
             color: #333;
+            margin-bottom: 5px;
         }
+
         .company-name {
-            color: #0066cc;
+            color: #667eea;
             font-weight: bold;
+            margin-bottom: 3px;
         }
+
         .date {
             color: #999;
             font-size: 13px;
+            margin-bottom: 8px;
         }
+
         ul {
             margin: 8px 0;
             padding-left: 20px;
         }
+
         li {
             margin-bottom: 5px;
             font-size: 14px;
         }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
         .skills-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
+
         .skill-tag {
             background-color: #e8f0f7;
-            padding: 5px 10px;
-            border-radius: 3px;
+            padding: 8px 12px;
+            border-radius: 5px;
             font-size: 13px;
+            border: 1px solid #667eea;
+            color: #667eea;
+        }
+
+        /* Print Styles */
+        @media print {
+            nav {
+                display: none;
+            }
+
+            .content-wrapper {
+                padding: 0;
+                background: white;
+            }
+
+            .container {
+                max-width: 100%;
+                margin: 0;
+                box-shadow: none;
+                padding: 40px;
+            }
+
+            body {
+                background: white;
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+                margin: 10px auto;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            h2 {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+
+            .contact-info {
+                font-size: 13px;
+            }
+
+            li {
+                font-size: 13px;
+            }
+
+            p {
+                font-size: 13px;
+            }
+
+            .skill-tag {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Melky Raham</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./CV_Melky_Raham_Ariyanto.html">CV</a></li>
+                <li><a href="../Portfolio/portfolio.html">Portfolio</a></li>
+                <li><a href="../Surat Lamaran/Surat_Lamaran_Kerja.html">Surat Lamaran</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
         <header>
             <h1>MELKY RAHAM ARIYANTO, S.H.</h1>
             <div class="contact-info">
@@ -167,5 +381,34 @@
             </ul>
         </section>
     </div>
+    </div>
+
+    <script>
+        // Navigation Drawer Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
